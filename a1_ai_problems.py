@@ -17,3 +17,8 @@
 # assert fizbuzz(6) == "Fizz", "fizzbuzz 6 test"
 # assert fizbuzz(15) == "FizzBuzz", "fizzbuzz 15 test"
 
+number = 0
+
+for x in range(1, 16):
+    result = number 
+    number = number + 1
