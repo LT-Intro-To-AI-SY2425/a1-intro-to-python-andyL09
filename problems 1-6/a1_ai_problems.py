@@ -7,6 +7,7 @@ number = 0
 for x in range(1, 16):
     result = number 
     if number % 3 == 0:
+        print(number)
         
     number = number + 1
 
