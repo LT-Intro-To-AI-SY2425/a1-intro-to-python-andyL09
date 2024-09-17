@@ -1,0 +1,37 @@
+# ### 2. **Basic Calculator**:
+#    - Create a simple calculator program that takes two 
+#       numbers as input and asks the user which operation 
+#       (addition, subtraction, multiplication, division) they 
+#       would like to perform. Display the result and ask if 
+#       they want to perform another calculation.
+
+userOperation = input("Welcome to calculator enter 'add', 'subtract', 'multiply', or 'divide' depending on what operation you want to do")
+
+def twoNumbers():
+    firstNumber = int(input("enter the first number:"))
+    secondNumber = int(input("enter the second number:"))
+    
+    if userOperation == "add":
+        print(firstNumber + secondNumber)
+    elif userOperation == "sutract":
+        print(firstNumber - secondNumber)
+    elif userOperation == "multiply":
+        print(firstNumber * secondNumber)
+    elif userOperation == "divide":
+        print(firstNumber / secondNumber)
+
+if userOperation == "add" :
+    print("You haved selected to add")
+    twoNumbers()
+elif userOperation == "subtract":
+    print("you haved selected subtract")
+    twoNumbers()
+elif userOperation == "multiply":
+    print("you haved selected multiply")
+    twoNumbers()
+elif userOperation == "divide":
+    print("you haved selected divide")
+    twoNumbers()
+    
+else:
+    print("That isnt one of the operations try again")
