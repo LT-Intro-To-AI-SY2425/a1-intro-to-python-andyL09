@@ -25,8 +25,10 @@ def absolute(n: int) -> int:
     Returns:
         the absolute value of the passed in number
     """
-    raise NotImplementedError("absolute")
-
+    if n < 0:
+         return -1 * n
+    else:
+         return n
 
 def factorial(n: int) -> int:
     """Takes a number n, and computes the factorial n! You can assume the passed in
@@ -38,7 +40,10 @@ def factorial(n: int) -> int:
     Returns:
         factorial of the passed in number
     """
-    raise NotImplementedError("factorial")
+    result = 1
+    for x in range(1, n + 1):
+        result *= x
+    return result
 
 
 T = TypeVar("T")
@@ -55,8 +60,7 @@ def every_other(lst: List[T]) -> List[T]:
     Returns:
         a list of every of other item in the original list starting with the first
     """
-    raise NotImplementedError("every_other")
-
+    return lst[::2]
 
 def sum_list(lst: List[int]) -> int:
     """Takes a list of numbers, and returns the sum of the numbers in that list. Cannot
@@ -68,8 +72,10 @@ def sum_list(lst: List[int]) -> int:
     Returns:
         the sum of the passed in list
     """
-    raise NotImplementedError("sum_list")
-
+    s = 0
+    for el in lst:
+        s += el
+    return s
 
 def mean(lst: List[int]) -> float:
     """Takes a list of numbers, and returns the mean of the numbers.
@@ -80,8 +86,12 @@ def mean(lst: List[int]) -> float:
     Returns:
         the mean of the passed in list
     """
-    raise NotImplementedError("mean")
-
+if lst: 
+    s = sum_list
+    num_el = len(lst)
+    return s / num_el
+else:
+    return 0
 
 def median(lst: List[int]) -> float:
     """Takes an ordered list of numbers, and returns the median of the numbers.
@@ -95,8 +105,13 @@ def median(lst: List[int]) -> float:
     Returns:
         the median of the passed in list
     """
-    raise NotImplementedError("median")
-
+    if len(lst) % 2 == 1:
+        mid = len(lst) // 2
+        return lst[mid]
+    else:
+        mid1 = len(lst) // 2
+        mid2 = mid1 - 1
+        return (lst[mid1] + lst[mid2]) / 2
 
 def duck_duck_goose(lst: List[str]) -> List[str]:
     """Given an list of names (strings), play 'duck duck goose' with it, knocking out
@@ -105,7 +120,8 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     In other words, when you hit the end of the list, wrap around and keep counting from
     where you were.
 
-    For example, if given this list ['Nathan', 'Sasha', 'Sara', 'Jennie'], you'd first
+__main__":
+    assert absolute(-1) == 1, "absolute    For example, if given this list ['Nathan', 'Sasha', 'Sara', 'Jennie'], you'd first
     knock out Sara. Then first 'duck' on Jennie, wrap around to 'duck' on Nathan and
     'goose' on Sasha - knocking him out and leaving only Nathan and Jennie.
 
@@ -117,13 +133,37 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     Returns:
         the resulting list after playing duck duck goose
     """
-    raise NotImplementedError("duck_duck_goose")
+
+    i = 0 
+    current = "duck1"
+    while len(lst) > 2:
+        if current == "duck1": 
+            current = "duck2"
+            i += 1
+        elif current == "duck2":
+            current = "goose"
+            i += 1
+        else:
+            current = "duck1"
+            lst.pop(i)
+
+        #wrap when at other end
+        if i == len(lst):
+            i = 0
+
+    return lst
+
 
 
 # this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
+    assert absolute(1) == 1, "absolute of 1 failed"
     assert absolute(-1) == 1, "absolute of -1 failed"
+    
     assert factorial(4) == 24, "factorial of 4 failed"
+    assert factorial(5) == 120, "factorial of 5 failed"
+    assert factorial(0) == 1, "factorial of 0 failed"
+
     assert every_other([1, 2, 3, 4, 5]) == [
         1,
         3,
@@ -131,7 +171,10 @@ if __name__ == "__main__":
     ], "every_other of [1,2,3,4,5] failed"
     assert sum_list([1, 2, 3]) == 6, "sum_list of [1,2,3] failed"
     assert mean([1, 2, 3, 4, 5]) == 3, "mean of [1,2,3,4,5] failed"
+    assert mean([1, 2, 3, 4, 5, 6]) == 3.5, "mean of [1,2,3,4,5,6] failed"
+    assert mean([]) == 0, "mean of [] failed"
     assert median([1, 2, 3, 4, 5]) == 3, "median of [1,2,3,4,5] failed"
+    assert median([1, 2, 3, 4, 5, 6]) == 3.5, "median of [1,2,3,4,5,6] failed"
 
     names = ["roscoe", "kim", "woz", "solin", "law", "remess"]
     assert duck_duck_goose(names) == ["roscoe", "law"]
