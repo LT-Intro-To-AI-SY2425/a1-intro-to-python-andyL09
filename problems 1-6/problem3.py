@@ -3,4 +3,15 @@
 #       and checks if it is a palindrome (a word that reads the 
 #       same backward as forward).
 
-print("hi")
+def reverse(string):
+    string = string[::-1]
+    return string
+
+userWord = input("enter a word to check if its a palindrome")
+
+flippedUserWord = reverse(userWord)
+
+if userWord == flippedUserWord:
+    print("This word is a palindrome")
+else:
+    print("This word is not a palindrome")
