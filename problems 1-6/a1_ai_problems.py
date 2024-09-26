@@ -50,7 +50,10 @@ for x in range(1, 16):
 #       same backward as forward).
 
 # ### 4. **Simple AI: Chatbot**:
-#    - Create a basic chatbot using `if` and `else` statements. The program should take input from the user and respond to simple keywords like "hello", "bye", or "how are you?". You can expand this with more responses as you get comfortable.
+#    - Create a basic chatbot using `if` and `else` statements.
+#        The program should take input from the user and respond 
+#        to simple keywords like "hello", "bye", or "how are you?". 
+#        You can expand this with more responses as you get comfortable.
 
 # ### 5. **FizzBuzz Challenge**:
 #    - Print numbers from 1 to 100, but for multiples 
